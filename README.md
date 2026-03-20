@@ -21,18 +21,18 @@ It helps developers analyze API performance, simulate load, detect failures, and
 ---
 
 ## 🧱 Project Structure
-```APTS/
+APTS/
 │
 ├── apts/
-│ ├── cli.py
-│ ├── request_sender.py
-│ ├── load_tester.py
-│ ├── metrics.py
-│ ├── report.py
+│   ├── cli.py
+│   ├── request_sender.py
+│   ├── load_tester.py
+│   ├── metrics.py
+│   ├── report.py
 │
 ├── main.py
 ├── requirements.txt
-└── README.md```
+└── README.md
 
 
 ---
