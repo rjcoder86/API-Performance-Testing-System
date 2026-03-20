@@ -106,6 +106,18 @@ python main.py
 
 ---
 
+### 🔸 Authenticated API (Auto Login)
+
+
+python main.py \
+--url http://localhost:8000/api/users/ \
+--login-url http://localhost:8000/api/login/ \
+--credentials - {"username":YOUR_USERNAME, "password":PASSWORD}\
+--token-field - Token field in login response
+
+
+---
+
 ### 🔸 POST API
 
 
