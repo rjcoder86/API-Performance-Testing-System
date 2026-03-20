@@ -21,7 +21,7 @@ It helps developers analyze API performance, simulate load, detect failures, and
 ---
 
 ## 🧱 Project Structure
-APTS/
+```APTS/
 │
 ├── apts/
 │ ├── cli.py
@@ -32,7 +32,7 @@ APTS/
 │
 ├── main.py
 ├── requirements.txt
-└── README.md
+└── README.md```
 
 
 ---
