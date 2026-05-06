@@ -1,234 +1,123 @@
-# 🚀 APTS - API Performance Testing System
+# 🚀 API Performance Testing System (APTS)
 
-APTS is a CLI-based API performance testing tool built in Python.  
-It helps developers analyze API performance, simulate load, detect failures, and understand why APIs fail.
+APTS is a Python-based toolkit designed to **test, analyze, and optimize API performance**.
+
+It evolves from a simple CLI-based load testing tool into a powerful **API profiling and optimization system**.
 
 ---
 
-## 🎯 Features
+## 🎯 Vision
 
-- ✅ Supports GET, POST, PUT, DELETE APIs
-- ✅ Concurrent load testing
-- ✅ Response time analysis (avg, min, max)
-- ✅ Success rate calculation
-- ✅ Error classification (HTTP errors, timeout, connection issues)
-- ✅ Authentication support (Bearer token)
-- ✅ Custom headers support
-- ✅ JSON request body support
-- ✅ Performance rating system
-- ✅ CLI-based lightweight tool
+APTS aims to help developers and testers:
+
+* Measure API performance under load
+* Identify failure patterns and bottlenecks
+* Detect inefficient database usage
+* Suggest areas for optimization in backend code
+
+---
+
+## 🚀 Project Evolution
+
+### 🔹 Version 1 – API Testing Engine
+
+A CLI-based tool for testing API performance and reliability.
+
+#### ✅ Features
+
+* API testing (GET, POST, PUT, DELETE)
+* Concurrent load testing
+* Response time metrics (avg, min, max)
+* Success rate calculation
+* Error classification (401, 500, timeout, etc.)
+* Authentication support:
+
+  * Bearer token
+  * Auto login via credentials
+* Custom headers & JSON body support
+* CLI-based execution with detailed output
+
+👉 📂 [Explore Version 1](./version1)
+
+---
+
+### 🔹 Version 2 – API Optimization Engine (In Progress 🚧)
+
+An internal profiling system to analyze backend API performance.
+
+#### 🔥 Planned Features
+
+* Decorator-based API profiling
+* Execution time tracking
+* Database query count analysis
+* Slow query detection
+* N+1 query identification (heuristic)
+* Response size tracking
+* Optimization suggestions:
+
+  * `select_related` / `prefetch_related`
+  * Query reduction strategies
+* Developer-friendly performance reports
+
+👉 📂 [Explore Version 2](./version2)
 
 ---
 
 ## 🧱 Project Structure
+
 ```
-APTS/
+API-Performance-Testing-System/
 │
-├── apts/
-│   ├── cli.py
-│   ├── request_sender.py
-│   ├── load_tester.py
-│   ├── metrics.py
-│   ├── report.py
-│
-├── main.py
-├── requirements.txt
-└── README.md
+├── version1/        # CLI-based API testing tool
+├── version2/        # API profiling & optimization system
+└── README.md        # Project overview
 ```
 
+---
+
+## 🧠 Key Concepts Used
+
+* Multithreading (ThreadPoolExecutor)
+* API request lifecycle handling
+* Performance metrics calculation
+* Error classification & observability
+* CLI tool development
+* Authentication workflows
+* Django ORM query analysis (V2)
+* Modular architecture design
 
 ---
 
-## ⚙️ Installation
+## 💡 Why This Project?
 
-### 1. Clone the repository
+Most API tools focus on either:
 
-git clone <your-repo-url>
-cd APTS
+* Testing (like Postman), or
+* Monitoring (like enterprise tools)
 
+APTS aims to bridge the gap by providing:
 
-### 2. Create virtual environment (optional)
-
-
-python -m venv venv
-source venv/bin/activate # Linux/Mac
-venv\Scripts\activate # Windows
-
-
-### 3. Install dependencies
-
-
-pip install -r requirements.txt
-
+👉 **Lightweight + Developer-friendly + Insight-driven API analysis**
 
 ---
 
-## ▶️ Usage
-
-### 🔹 Basic Syntax
-
-
-python main.py --url <API_URL> [OPTIONS]
-
-
----
-
-## 🧪 Examples
-
-### 🔸 GET API
-
-
-python main.py --url https://jsonplaceholder.typicode.com/posts
-
-
----
-
-### 🔸 Load Testing
-
-
-python main.py
---url https://jsonplaceholder.typicode.com/posts
-
---requests 100
---concurrency 10
-
-
----
-
-### 🔸 Authenticated API
-
-
-python main.py
---url http://localhost:8000/api/users/
-
---token YOUR_ACCESS_TOKEN
-
-
----
-
-### 🔸 Authenticated API (Auto Login)
-
-
-python main.py \
---url http://localhost:8000/api/users/ \
---login-url http://localhost:8000/api/login/ \
---credentials - {"username":YOUR_USERNAME, "password":PASSWORD}\
---token-field - Token field in login response
-
-
----
-
-### 🔸 POST API
-
-
-python main.py
---url http://localhost:8000/api/users/
-
---method POST
---data '{"name": "RJ"}'
---header "Content-Type: application/json"
-
-
----
-
-### 🔸 PUT API
-
-
-python main.py
---url http://localhost:8000/api/users/1/
-
---method PUT
---data '{"name": "Updated"}'
-
-
----
-
-### 🔸 DELETE API
-
-
-python main.py
---url http://localhost:8000/api/users/1/
-
---method DELETE
-
-
----
-
-### 🔸 Custom Headers
-
-
-python main.py
---url http://localhost:8000/api/data/
-
---header "Content-Type: application/json"
---header "X-API-KEY: abc123"
-
-
----
-
-## 📊 Sample Output
-
-🚀 Starting API Test...
-Endpoint : http://localhost:8000/api/users/
-
-Method : GET
-Total Requests : 100
-Concurrency : 10
-Authentication : Enabled
-Request Body : None
-API Performance Report
-
-Total Requests: 100
-Success Rate: 85.00%
-
-Why API is failing:
-HTTP_401: 10 requests
-HTTP_500: 5 requests
-
-Average Response Time: 0.312 sec
-Min Response Time: 0.120 sec
-Max Response Time: 0.821 sec
-Performance Rating: Good 👍
-
-
----
-
-## 📈 Performance Rating Criteria
-
-| Avg Response Time | Rating |
-|------------------|--------|
-| < 200 ms         | Excellent 🚀 |
-| 200-500 ms       | Good 👍 |
-| 500ms - 1s       | Moderate ⚡ |
-| > 1s             | Poor 🐢 |
-
----
-
-## ⚠️ Notes
-
-- JSON body must be valid format
-- Token should be passed without "Bearer" keyword (handled internally)
-- For POST/PUT, ensure correct Content-Type header
-
----
-
-## 🚀 Future Improvements
-
-- 🔹 Auto login & token generation
-- 🔹 API scenario testing (multi-step flow)
-- 🔹 JSON report export
-- 🔹 Web dashboard
-- 🔹 AI-based optimization suggestions
+## 🚀 Future Roadmap
+
+* Scenario-based API workflows (multi-step testing)
+* JSON report export
+* Retry & stability testing
+* AI-based optimization suggestions
+* Web dashboard for visualization
 
 ---
 
 ## 👨‍💻 Author
 
-Rohit Jadhav  
+**Rohit Jadhav**
 Python Backend Developer
 
 ---
 
 ## 📌 License
 
-This project is for learning and portfolio purposes.
+This project is for learning, experimentation, and portfolio purposes.
